@@ -1,17 +1,17 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+A todo list app created using JavaScript, HTML, and CSS for Project 7 of my TripleTen software engineering boot camp.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+This project uses JavaScript classes and constructors to make a simple todo list function properly and effectiently.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+I used all that I've learned about JS classes, constructors, importing and exporting in this project.
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+https://github.com/F0XYW4FFL3Z/se_project_todo-app
