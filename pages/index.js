@@ -11,8 +11,6 @@ import TodoCounter from "../components/TodoCounter.js";
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = document.forms["add-todo-form"];
-const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
-const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
@@ -47,10 +45,6 @@ const section = new Section({
 
 section.renderItems();
 
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
-
 function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
 }
@@ -70,9 +64,12 @@ const generateTodo = (data) => {
 };
 
 const renderTodo = (item) => {
-  section._renderer(item);
-  todoCounter.updateTotal(true);
+  const todo = new Todo(item, "#todo-template", handleCheck, handleDelete);
+  const element = todo.getView();
+  section.addItem(element);
 };
+
+todoCounter.updateTotal(true);
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
