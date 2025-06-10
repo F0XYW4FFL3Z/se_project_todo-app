@@ -59,12 +59,12 @@ class FormValidator {
       this._submitButtonSelector
     );
 
-    this._toggleButtonState(this._buttonElement);
+    this._toggleButtonState());
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._buttonElement);
+        this._toggleButtonState();
       });
     });
   }
@@ -82,7 +82,7 @@ class FormValidator {
       this._submitButtonSelector
     );
     this._formEl.reset();
-    this._toggleButtonState(this._buttonElement);
+    this._toggleButtonState();
   }
 }
 
