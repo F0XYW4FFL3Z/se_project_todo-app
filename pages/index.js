@@ -23,6 +23,7 @@ const addTodoPopup = new PopupWithForm({
     // Create a date object and adjust for timezone
     const date = new Date(dateInput);
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    todoCounter.updateTotal(true);
 
     const id = uuidv4();
     const values = { name, date, id };
@@ -33,13 +34,15 @@ const addTodoPopup = new PopupWithForm({
 
 addTodoPopup.setEventListeners();
 
+const renderTodo = (item) => {
+  const todo = new Todo(item, "#todo-template", handleCheck, handleDelete);
+  const element = todo.getView();
+  section.addItem(element);
+};
+
 const section = new Section({
   items: initialTodos,
-  renderer: (data) => {
-    const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
-    const element = todo.getView();
-    section.addItem(element);
-  },
+  renderer: renderTodo,
   containerSelector: ".todos__list",
 });
 
@@ -62,14 +65,6 @@ const generateTodo = (data) => {
 
   return todoElement;
 };
-
-const renderTodo = (item) => {
-  const todo = new Todo(item, "#todo-template", handleCheck, handleDelete);
-  const element = todo.getView();
-  section.addItem(element);
-};
-
-todoCounter.updateTotal(true);
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
